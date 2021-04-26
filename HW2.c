@@ -140,34 +140,30 @@ int main()
     	                      exit(0);
     	      
     	   if (strcmp(CommandParsed[0],"cd") == 0)
-    	                     chdir(CommandParsed[1]);
-    	      else{
-    	      
-            		if (info == 1)
-                		            ExecuteCommand(CommandParsed);
+    	             chdir(CommandParsed[1]);
+    	      else
+	      {
+            	   if (info == 1)
+                       ExecuteCommand(CommandParsed);
 	    	else if (info == 2)
 	    	{
-		                       pid = fork();
-	      
-
-        			if (pid == 0)
-                                                                    {
-        				
-        			     ExecutePipe(CommandParsed, PipeParsed);
-        					
-         			}
-         			else
-         			{
-         				
-         			     waitpid(pid,NULL,WUNTRACED);
-         			}
+		        pid = fork();
+			
+			if (pid == 0)
+			{
+			     ExecutePipe(CommandParsed, PipeParsed);
+			}
+			else
+			{
+			     waitpid(pid,NULL,WUNTRACED);
+			}
          					
 				
-                                           }
+                }
          			    
-                              }
+           }
 	
-              }
+        }
     }
     
     return 0;
